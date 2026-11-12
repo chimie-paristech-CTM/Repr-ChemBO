@@ -1,0 +1,83 @@
+{
+  "dataset":{ 
+    "__grid__":[
+      {
+        "name": "shields",
+        "normalize_objective": true,
+        "objective_mode": "MAX",
+        "canonical_smiles": false,
+        "de_duplicate": false
+      }
+      ]
+  },
+
+  "normalize_feature": "local",
+  "normalize_level": "gp",
+
+  "wrapper": {"__grid__":[
+    {"noise": null}
+  ]
+  },
+
+  "fp_level": "mol",
+
+  "fp": {"__grid__": [
+    {
+      "name": "mordred",
+      "decorrelation": 0.7,
+      "params":{}
+    },
+    {
+      "name": "t5-base-chem",
+      "decorrelation":0.7,
+      "class": "LLM_Fingerprint",
+      "params":{
+        "model_name": "GT4SD/multitask-text-and-chemistry-t5-base-augm",
+        "pooling_method": "average",
+        "normalize_embeddings": false,
+        "device": "cpu",
+        "prefix": null,
+        "layer_index": -1
+      }
+    },
+    {
+      "name": "one-hot",
+      "decorrelation": false,
+      "params": {}
+    },
+    {
+      "name": "chemberta",
+      "decorrelation":0.7,
+      "class": "LLM_Fingerprint",
+      "params":{
+        "model_name": "DeepChem/ChemBERTa-100M-MLM",
+        "pooling_method": "average",
+        "normalize_embeddings": false,
+        "device": "cpu",
+        "prefix": null,
+        "layer_index": 0
+      }
+    }
+  ]},
+  "hyperprior": {"__grid__": ["Chen"]},
+  "acq_func": "qLogEI",
+  "init_method": "random",
+  "kernel": "Matern",
+
+  "bo":{
+    "n_iter":50,
+    "switch_after":5,
+    "batch_size":1,
+    "mc_runs":20,
+    "impute_mode":"ignore"
+  },
+
+  "scoring":
+  {
+    "top_perc_cov": [0.01, 0.05, 0.1],
+    "auc": true,
+    "reorder_auc": false
+  },
+
+  "seed":{"__grid__": [1337]}
+}

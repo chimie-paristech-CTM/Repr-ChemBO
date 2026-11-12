@@ -1,0 +1,15 @@
+{
+  "objective": "objective",
+
+  "molecular_params": {},
+
+  "numeric_params": ["ni_load", "fe_load", "co_load", "mn_load", "ce_load", "la_load"],
+
+  "rxn_params":{
+    "rxn_name": null
+  },
+
+  "prompt_params":{
+    "prompt_name": "procedure"
+  }
+}

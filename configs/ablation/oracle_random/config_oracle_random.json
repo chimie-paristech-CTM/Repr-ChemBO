@@ -1,0 +1,79 @@
+{
+  "dataset":{ 
+    "__grid__":[
+      {
+        "name": "additives_1",
+        "normalize_objective": true,
+        "objective_mode": "MAX",
+        "canonical_smiles": true,
+        "de_duplicate": true
+      }
+      ]
+  },
+
+  "normalize_feature": {"__grid__": ["local"]},
+  "normalize_level": "gp",
+
+  "wrapper": {"__grid__": [
+    {"noise": null}
+  ]},
+
+  "fp_level": "mol",
+
+  "oracle_test": true,
+  "ard":{"__grid__": [true, false]},
+
+  "fp": {"__grid__": [
+    {
+      "name": "oracle_random_10",
+      "decorrelation": false,
+      "class": "OracleFingerprint",
+      "params": {
+        "dim": 10,
+        "low": 0.0,
+        "high": 1.0
+      }
+    },
+    {
+      "name": "oracle_random_100",
+      "decorrelation": false,
+      "class": "OracleFingerprint",
+      "params": {
+        "dim": 100,
+        "low": 0.0,
+        "high": 1.0
+      }
+    },
+    {
+      "name": "oracle_random_200",
+      "decorrelation": false,
+      "class": "OracleFingerprint",
+      "params": {
+        "dim": 200,
+        "low": 0.0,
+        "high": 1.0
+      }
+    }
+  ]},
+  "hyperprior": {"__grid__": ["Chen"]},
+  "acq_func": "qLogEI",
+  "init_method": "random_low",
+  "kernel": "Matern",
+
+  "bo":{
+    "n_iter":60,
+    "switch_after":10,
+    "batch_size":1,
+    "mc_runs":1,
+    "impute_mode":"ignore"
+  },
+
+  "scoring":
+  {
+    "top_perc_cov": [0.01, 0.05, 0.1],
+    "auc": true,
+    "reorder_auc": true
+  },
+
+  "seed":{"__grid__": [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]}
+}

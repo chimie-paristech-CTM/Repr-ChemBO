@@ -1,0 +1,12 @@
+{
+  "objective": "yield",
+
+  "molecular_params": {
+    "aryl_halide":"aryl_halide_smiles",
+    "base": "base_smiles",
+    "ligand": "ligand_smiles",
+    "additive": "additive_smiles"
+  },
+
+  "numeric_params": []
+}

@@ -1,0 +1,23 @@
+{
+  "objective": "objective",
+
+  "molecular_params": {
+    "reactant_1": "reactant_1_smiles",
+    "reactant_2": "reactant_2_smiles",
+    "ligand": "ligand_smiles",
+    "reagent_1": "reagent_1_smiles",
+    "solvent_1": "solvent_1_smiles"
+  },
+
+  "numeric_params": [],
+
+  "comment": "catalyst column is not included because only one value.",
+
+  "rxn_params":{
+    "rxn_name": "rxn"
+  },
+
+  "prompt_params":{
+    "prompt_name": "procedure"
+  }
+}

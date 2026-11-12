@@ -1,0 +1,13 @@
+{
+  "objective": "yield",
+
+  "molecular_params": {
+    "electrophile": "Electrophile_SMILES",
+    "nucleophile": "Nucleophile_SMILES",
+    "ligand": "Ligand_SMILES",
+    "base": "Base_SMILES",
+    "solvent": "Solvent_SMILES"
+  },
+
+  "numeric_params": []
+}

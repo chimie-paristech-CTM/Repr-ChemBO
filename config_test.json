@@ -1,0 +1,53 @@
+{
+  "dataset":
+    {
+      "name": "bh_1",
+      "normalize_objective": true,
+      "objective_mode": "MAX",
+      "canonical_smiles": true,
+      "de_duplicate": true
+    },
+
+  "normalize_feature": "local",
+  "normalize_level": "gp",
+
+  "wrapper": {"noise": null},
+
+  "fp_level": "mol",
+
+  "fp":
+    {
+      "name": "t5",
+      "decorrelation":0.7,
+      "class": "LLM_Fingerprint",
+      "params":{
+        "model_name": "t5-base",
+        "pooling_method": "average",
+        "normalize_embeddings": false,
+        "device": "cpu",
+        "prefix": null,
+        "layer_index": -1
+      }
+    },
+  "hyperprior": "Chen",
+  "acq_func": "qLogEI",
+  "init_method": "random_low",
+  "kernel": "Matern",
+
+  "bo":{
+    "n_iter":60,
+    "switch_after":10,
+    "batch_size":1,
+    "mc_runs":1,
+    "impute_mode":"ignore"
+  },
+
+  "scoring":
+  {
+    "top_perc_cov": [0.01, 0.05, 0.1],
+    "auc": true,
+    "reorder_auc": true
+  },
+
+  "seed":1
+}

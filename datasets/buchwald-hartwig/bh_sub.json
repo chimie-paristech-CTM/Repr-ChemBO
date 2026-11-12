@@ -1,0 +1,20 @@
+{
+  "objective": "objective",
+
+  "molecular_params": {
+    "aryl_halide_name": "aryl halide",
+    "base_name": "base",
+    "ligand_name": "ligand",
+    "additive_name": "additive"
+  },
+
+  "numeric_params": [],
+
+  "rxn_params":{
+    "rxn_name": "rxn"
+  },
+
+  "prompt_params":{
+    "prompt_name": "procedure"
+  }
+}

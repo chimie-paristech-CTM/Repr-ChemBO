@@ -1,0 +1,205 @@
+{
+  "dataset":{ 
+    "__grid__":[
+      {
+        "name": "bh_1",
+        "normalize_objective": true,
+        "objective_mode": "MAX",
+        "canonical_smiles": true,
+        "de_duplicate": true
+      },
+      {
+        "name": "bh_2",
+        "normalize_objective": true,
+        "objective_mode": "MAX",
+        "canonical_smiles": true,
+        "de_duplicate": true
+      },
+      {
+        "name": "bh_3",
+        "normalize_objective": true,
+        "objective_mode": "MAX",
+        "canonical_smiles": true,
+        "de_duplicate": true
+      },
+      {
+        "name": "bh_4",
+        "normalize_objective": true,
+        "objective_mode": "MAX",
+        "canonical_smiles": true,
+        "de_duplicate": true
+      },
+      {
+        "name": "bh_5",
+        "normalize_objective": true,
+        "objective_mode": "MAX",
+        "canonical_smiles": true,
+        "de_duplicate": true
+      },
+      {
+        "name": "suzuki-gollum",
+        "normalize_objective": true,
+        "objective_mode": "MAX",
+        "canonical_smiles": true,
+        "de_duplicate": true
+      },
+      {
+        "name": "additives_1",
+        "normalize_objective": true,
+        "objective_mode": "MAX",
+        "canonical_smiles": true,
+        "de_duplicate": true
+      },
+      {
+        "name": "additives_2",
+        "normalize_objective": true,
+        "objective_mode": "MAX",
+        "canonical_smiles": true,
+        "de_duplicate": true
+      },
+      {
+        "name": "additives_3",
+        "normalize_objective": true,
+        "objective_mode": "MAX",
+        "canonical_smiles": true,
+        "de_duplicate": true
+      },
+      {
+        "name": "additives_4",
+        "normalize_objective": true,
+        "objective_mode": "MAX",
+        "canonical_smiles": true,
+        "de_duplicate": true
+      },
+      {
+        "name": "photoswitch",
+        "normalize_objective": true,
+        "objective_mode": "MAX",
+        "canonical_smiles": true,
+        "de_duplicate": true
+      },
+      {
+        "name": "redox",
+        "normalize_objective": true,
+        "objective_mode": "MIN",
+        "canonical_smiles": true,
+        "de_duplicate": true
+      },
+      {
+        "name": "solvation",
+        "normalize_objective": true,
+        "objective_mode": "MIN",
+        "canonical_smiles": true,
+        "de_duplicate": true
+      }
+      ]
+  },
+
+  "normalize_feature": {"__grid__": ["local", "global"]},
+  "normalize_level": "gp",
+
+  "fix_ls":false,
+  "fix_os":false,
+  "fix_mean":false,
+  "ard":false,
+
+  "wrapper": {"__grid__": [
+    {"noise": null}
+  ]},
+
+  "fp_level": "mol",
+
+  "fp": {"__grid__": [
+    {
+      "name": "one-hot",
+      "decorrelation": false,
+      "params": {}
+    },
+    {
+      "name": "mordred",
+      "decorrelation": 0.7,
+      "params": {}
+    },
+    {
+      "name": "nach0",
+      "decorrelation":0.7,
+      "class": "NaCh0_Fingerprint",
+      "params":{
+        "model_name": "insilicomedicine/nach0_base",
+        "pooling_method": "average",
+        "normalize_embeddings": null,
+        "device": "cpu",
+        "prefix": null,
+        "layer_index": -1
+      }
+    },
+    {
+      "name": "chemberta",
+      "decorrelation":0.7,
+      "class": "LLM_Fingerprint",
+      "params":{
+        "model_name": "DeepChem/ChemBERTa-100M-MLM",
+        "pooling_method": "average",
+        "normalize_embeddings": false,
+        "device": "cpu",
+        "prefix": null,
+        "layer_index": -1
+      }
+    },
+    {
+      "name": "t5-chem",
+      "decorrelation":0.7,
+      "class": "LLM_Fingerprint",
+      "params":{
+        "model_name": "GT4SD/multitask-text-and-chemistry-t5-base-augm",
+        "pooling_method": "average",
+        "normalize_embeddings": false,
+        "device": "cpu",
+        "prefix": null,
+        "layer_index": -1
+      }
+    },
+    {
+      "name": "t5",
+      "decorrelation":0.7,
+      "class": "LLM_Fingerprint",
+      "params":{
+        "model_name": "t5-base",
+        "pooling_method": "average",
+        "normalize_embeddings": false,
+        "device": "cpu",
+        "prefix": null,
+        "layer_index": -1
+      }
+    },
+    {
+      "name": "chemeleon",
+      "decorrelation": 0.7,
+      "class": "CheMeleonFingerprint",
+      "params": {
+        "device": "cpu"
+      }
+    }
+  ]},
+  "hyperprior": {"__grid__": ["no", "Chen"]},
+  "acq_func": "qLogEI",
+  "init_method": "random_low",
+  "kernel": "Matern",
+
+  "bo":{
+    "n_iter":60,
+    "switch_after":10,
+    "batch_size":1,
+    "mc_runs":1,
+    "impute_mode":"ignore"
+  },
+
+  "scoring":
+  {
+    "top_perc_cov": [0.01, 0.05, 0.1],
+    "auc": true,
+    "reorder_auc": true
+  },
+
+  "seed":{"__grid__": [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]}
+}

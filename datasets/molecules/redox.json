@@ -1,0 +1,17 @@
+{
+  "objective": "Ered",
+
+  "molecular_params": {
+    "molecule": "SMILES"
+  },
+
+  "numeric_params": [],
+
+  "rxn_params":{
+    "rxn_name": null
+  },
+
+  "prompt_params":{
+    "prompt_name": "SMILES"
+  }
+}

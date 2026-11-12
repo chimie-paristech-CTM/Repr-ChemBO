@@ -1,0 +1,14 @@
+{
+  "objective": "yield",
+
+  "molecular_params": {
+    "Solvent": "Solvent_SMILES",
+    "Base": "Base_SMILES",
+    "Ligand": "Ligand_SMILES"
+  },
+
+  "numeric_params": [
+    "Temp_C",
+    "Concentration"
+  ]
+}

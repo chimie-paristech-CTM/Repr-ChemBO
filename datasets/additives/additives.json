@@ -1,0 +1,17 @@
+{
+  "objective": "objective",
+
+  "molecular_params": {
+    "additive_name": "additives"
+  },
+
+  "numeric_params": [],
+
+  "rxn_params":{
+    "rxn_name": "rxn"
+  },
+
+  "prompt_params":{
+    "prompt_name": "rxn"
+  }
+}
