@@ -1,6 +1,6 @@
 # Repr-ChemBO
 
-This is the repository for the paper **Which Chemical Priors Should Bayesian Optimization Trust, and How Strongly??**
+This is the repository for the paper **Which Chemical Priors Should Bayesian Optimization Trust, and How Strongly?**
 
 ## How to run
 
